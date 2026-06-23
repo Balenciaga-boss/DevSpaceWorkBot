@@ -1,0 +1,42 @@
+services:
+  devspace-bot:
+    build:
+      context: .
+    container_name: devspace-bot
+    restart: unless-stopped
+    init: true
+    env_file:
+      - .env
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - devspace
+
+  mysql:
+    image: mysql:8.4
+    container_name: devspace-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-devspace_bot}
+      MYSQL_USER: ${MYSQL_USER:-devspace}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-change_me}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-change_root_me}
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u$${MYSQL_USER} -p$${MYSQL_PASSWORD} --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks:
+      - devspace
+
+volumes:
+  mysql_data:
+
+networks:
+  devspace:
+

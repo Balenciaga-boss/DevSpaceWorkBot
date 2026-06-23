@@ -1,0 +1,58 @@
+[
+  {
+    "type": "decision",
+    "content": "Use Python Aiogram for DEVSPACE bot",
+    "tags": ["devspace-bot"],
+    "files": [],
+    "date": "2026-06-23"
+  },
+  {
+    "type": "decision",
+    "content": "Skip separate admin panel for first release",
+    "tags": ["devspace-bot"],
+    "files": ["devspace_bot/handlers/estimate.py"],
+    "date": "2026-06-23"
+  },
+  {
+    "type": "fact",
+    "content": "Local run uses SQLite because MySQL is absent",
+    "tags": ["devspace-bot", "runtime"],
+    "files": [".env", "requirements.txt"],
+    "date": "2026-06-23"
+  },
+  {
+    "type": "fact",
+    "content": "Choice lists return directly to home",
+    "tags": ["devspace-bot", "navigation"],
+    "files": ["devspace_bot/keyboards.py", "devspace_bot/handlers/start.py"],
+    "date": "2026-06-23"
+  },
+  {
+    "type": "decision",
+    "content": "Repeat action cooldown is three seconds",
+    "tags": ["devspace-bot", "antispam"],
+    "files": [".env", ".env.example", "tests/test_antispam.py"],
+    "date": "2026-06-23"
+  },
+  {
+    "type": "fact",
+    "content": "Estimate form has one-step back cancellation",
+    "tags": ["devspace-bot", "navigation"],
+    "files": ["devspace_bot/keyboards.py", "devspace_bot/handlers/estimate.py"],
+    "date": "2026-06-23"
+  },
+  {
+    "type": "fact",
+    "content": "Successful applications show estimate submission confirmation",
+    "tags": ["devspace-bot", "messages"],
+    "files": ["devspace_bot/messages.py", "devspace_bot/handlers/estimate.py"],
+    "date": "2026-06-23"
+  },
+  {
+    "type": "fact",
+    "content": "Beget deploy uses Docker Compose with MySQL",
+    "tags": ["devspace-bot", "deploy"],
+    "files": ["Dockerfile", "compose.yaml", ".env.beget.example", "deploy/beget.md"],
+    "date": "2026-06-23"
+  }
+]
