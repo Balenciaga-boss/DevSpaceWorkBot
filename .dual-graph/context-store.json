@@ -54,5 +54,12 @@
     "tags": ["devspace-bot", "deploy"],
     "files": ["Dockerfile", "compose.yaml", ".env.beget.example", "deploy/beget.md"],
     "date": "2026-06-23"
+  },
+  {
+    "type": "fact",
+    "content": "Public push safety check excludes runtime secrets",
+    "tags": ["devspace-bot", "git"],
+    "files": ["SECURITY.md", "scripts/public_push_check.py", ".env.example"],
+    "date": "2026-06-23"
   }
 ]

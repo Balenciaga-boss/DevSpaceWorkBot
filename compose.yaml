@@ -20,8 +20,8 @@ services:
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE:-devspace_bot}
       MYSQL_USER: ${MYSQL_USER:-devspace}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-change_me}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-change_root_me}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?set MYSQL_PASSWORD in .env}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?set MYSQL_ROOT_PASSWORD in .env}
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - mysql_data:/var/lib/mysql
@@ -39,4 +39,3 @@ volumes:
 
 networks:
   devspace:
-

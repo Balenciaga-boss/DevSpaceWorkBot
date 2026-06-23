@@ -2,6 +2,27 @@
 
 Telegram bot for collecting project estimate requests for DEVSPACE.
 
+## Safety
+
+The public repository contains only source code, tests, deployment templates, and documentation.
+
+Runtime secrets are not stored in Git:
+
+- Telegram bot token
+- admin chat ID
+- MySQL passwords
+- local `.env`
+- local SQLite database
+- logs
+
+Before publishing changes, run:
+
+```bash
+python scripts/public_push_check.py
+```
+
+If a real Telegram token was ever exposed outside the local machine, revoke it in BotFather and generate a new one before production use.
+
 ## Features
 
 - Aiogram 3 FSM questionnaire.
